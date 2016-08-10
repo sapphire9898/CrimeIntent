@@ -21,11 +21,24 @@ public class CrimeLab {
     }
     private CrimeLab(Context context) {
         mCrimes = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            Crime crime = new Crime();
-            crime.setTitle("Crime #" + i);
-            crime.setSolved(i%2 == 0);
-            mCrimes.add(crime);
+//        for (int i = 0; i < 10; i++) {
+//            Crime crime = new Crime();
+//            crime.setTitle("Crime #" + i);
+//            crime.setSolved(i%2 == 0);
+//            mCrimes.add(crime);
+//        }
+    }
+    public void addCrime(Crime c) {
+        mCrimes.add(c);
+    }
+    public void removeCrime(Crime c) {
+        if (mCrimes == null) {
+            return;
+        }
+        for (int i = 0; i < mCrimes.size();i++) {
+            if (mCrimes.get(i).getUUID() == c.getUUID()) {
+                mCrimes.remove(i);
+            }
         }
     }
 
