@@ -10,10 +10,4 @@
     <string name="show_subtitle">Show Subtitle</string>
     <string name="hide_subtitle">Hide Subtitle</string>
     <string name="subtitle_format">%1$s crimes</string>
-    <plurals name="subtitle_plural">
-        <item quantity="one">%1$s crime</item>
-        <item quantity="other">%1$s crimes</item>
-    </plurals>
-    <string name="text_view_show_list">There are no crimes.</string>
-    <string name="button_show_list">Create your first crime</string>
 </resources>

@@ -64,6 +64,15 @@ public class CrimeFragment extends Fragment {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+
+        CrimeLab.get(getActivity()).updateCrime(mCrime);
+    }
+
+
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
         View v = inflater.inflate(R.layout.fragment_crime, container, false);
         mTitleField = (EditText)v.findViewById(R.id.crime_title);
@@ -123,24 +132,24 @@ public class CrimeFragment extends Fragment {
         });
         return v;
     }
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.fragment_crime, menu);
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {  //choose different actions when clicking the different menu item.
-        switch(item.getItemId()) {
-            case R.id.menu_item_new_crime_new:
-                CrimeLab.get(getActivity()).removeCrime(mCrime);
-                getActivity().finish();
-                return true;
-
-            default:return super.onOptionsItemSelected(item);
-        }
-    }
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        super.onCreateOptionsMenu(menu, inflater);
+//        inflater.inflate(R.menu.fragment_crime, menu);
+//    }
+    // delete button.
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()){
+//            case R.id.fragment_crime_delete_item :
+//                CrimeLab.get(getActivity()).deleteCrime(mCrime);
+//                getActivity().finish();
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//
+//    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
