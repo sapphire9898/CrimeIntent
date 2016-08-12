@@ -110,6 +110,8 @@ public class CrimeLab {
         values.put(CrimeTable.Cols.TITLE, crime.getTitle());
         values.put(CrimeTable.Cols.DATE, crime.getDate().getTime());
         values.put(CrimeTable.Cols.SOLVED, crime.isSolved() ? 1 : 0);
+        values.put(CrimeTable.Cols.SUSPECT, crime.getSuspect());
+//        values.put(CrimeTable.Cols.CONTACT_ID, crime.getContactId());
         return values;
     }
 
@@ -124,6 +126,14 @@ public class CrimeLab {
                 null
         );
         return new CrimeCursorWrapper(cursor);
+    }
+
+    public void deleteCrime(Crime crime) {
+        String uuidString = crime.getUUID().toString();
+
+        mDatabase.delete(CrimeTable.NAME,
+                CrimeTable.Cols.UUID + " = ?",
+                new String[] {uuidString});
     }
 
 }
